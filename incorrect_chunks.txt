@@ -1,0 +1,3 @@
+chunks_hist_incorrect = [11,64,72,73,83,84]
+
+chunks_bio_incorrect = [156,172]
