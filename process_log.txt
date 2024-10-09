@@ -1,0 +1,2 @@
+tessetact_pdf_processor.py --> time taken: 172.62 seconds --> start of the run: Tue Oct  8 18:03:19 2024
+tessetact_pdf_processor.py --> time taken: 442.59 seconds --> start of the run: Tue Oct  8 18:09:09 2024
