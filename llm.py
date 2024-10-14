@@ -233,7 +233,7 @@ class CustomLLM(LLM):
         result_text += f"Message: {message}\n"
         result_text += f"Content: {content}\n"
 
-        return result_text
+        return content
 
     def save_response_to_file(self, result_text: str, filename: str = 'api_response.txt'):
         """
@@ -264,7 +264,7 @@ if __name__ == "__main__":
 
     # Generate content based on a prompt
     result = custom_llm.generate_content("مرحبا حدثني عن الحياة")
-
+    print(result)
     # Save the response to a file
-    custom_llm.save_response_to_file(result)
+    # custom_llm.save_response_to_file(result)
 

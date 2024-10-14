@@ -1,6 +1,6 @@
 from bot import TelegramBot
 from llm_handler import LLMHandler
-from llm import GeminiLLM ,TitanLLM, ClaudeLLM
+from llm import GeminiLLM ,TitanLLM, ClaudeLLM, CustomLLM
 from chroma_text_processing import TextSplitter, RecursiveCharacterTextSplitterAdapter, NLTKTextSplitterAdapter, CustomSentenceTransformerEmbedding, ChromaInterface
 from dotenv import load_dotenv
 import os
@@ -12,7 +12,7 @@ def main():
     load_dotenv()
 
     telegram_token = os.getenv("TELEGRAM_TOKEN")
-    gemini_api_key = os.getenv("GEMINI_API_KEY")
+    # gemini_api_key = os.getenv("GEMINI_API_KEY")
     
     bot = TelegramBot(telegram_token)
     collection_name = "taw_bio"
@@ -30,8 +30,13 @@ def main():
     # llm = ClaudeLLM()
     # llm.configure(region_name='us-west-2', model_id="arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-instant-v1")
 
-    llm = GeminiLLM(model_name='gemini-1.0-pro-latest')
-    llm.configure(api_key=gemini_api_key)
+    # llm = GeminiLLM(model_name='gemini-1.0-pro-latest')
+    # llm.configure(api_key=gemini_api_key)
+    llm  = CustomLLM("https://j0aoonwgxl.execute-api.eu-north-1.amazonaws.com/dev")
+ # Configure the LLM with the API token
+    auth_token = os.getenv("AUTH_TOKEN_AWS")
+    llm.configure(auth_token=auth_token)
+ 
 
     # Step 2: Configure the instance with AWS credentials
     llm_handler = LLMHandler(collection_name, db_path,llm,template_name= 'detailed_ar')
